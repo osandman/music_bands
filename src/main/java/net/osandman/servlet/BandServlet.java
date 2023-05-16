@@ -8,6 +8,7 @@ import net.osandman.db_service.GetData;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 @WebServlet(name = "bandServlet", value = "/band")
 public class BandServlet extends HttpServlet {
@@ -29,6 +30,8 @@ public class BandServlet extends HttpServlet {
             String bandName = req.getParameter("name");
             printQuery(pw, bandName);
 
+            pw.println("<br>\n" +
+                    "<a href=\"/\">HOME</a>");
 //        for (Cookie cookie : cookies) {
 //            pw.println("<p>");
 //            pw.printf("%s : %s, MaxAge = %d, version = %s",
@@ -42,10 +45,13 @@ public class BandServlet extends HttpServlet {
     }
 
     private void printQuery(PrintWriter pw, String bandName) {
-        pw.println("<p>Get all albums from band name contains word '" + bandName + "'</p>");
-        //            pw.printf("Database connection: " + dbConnection.getSchema());
-        new GetData().getAlbums(bandName)
-                .forEach((k, v) -> pw.println("[" + v + "] " + k + "<br>"));
+        Map<String, String> bands = new GetData().getAlbums(bandName);
+        if (bands == null || bands.size() == 0) {
+            pw.println("<br>Nothing found ... <br>");
+        } else {
+            pw.println("<p>Get all albums from band name contains word '" + bandName + "'</p>");
+            bands.forEach((k, v) -> pw.println("[" + v + "] " + k + "<br>"));
+        }
     }
 
     @Override
