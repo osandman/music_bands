@@ -1,4 +1,4 @@
-input[type=text], select {
+input[type=search], select {
     width: 20%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -8,19 +8,49 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=submit] {
+.styled {
+    border: 0;
     width: 20%;
-    background-color: #4fad52;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: #4fad52;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
 }
 
-input[type=submit]:hover {
+.styled:hover {
     background-color: #357c38;
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+/*input[type=button] {*/
+/*    width: 20%;*/
+/*    background-color: #4fad52;*/
+/*    color: white;*/
+/*    padding: 14px 20px;*/
+/*    margin: 8px 0;*/
+/*    border: none;*/
+/*    border-radius: 4px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*input[type=button]:hover {*/
+/*    background-color: #357c38;*/
+/*}*/
+
+p {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 150%;
+    /*border: 1px solid #999;*/
 }
 
 div {

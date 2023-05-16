@@ -10,10 +10,11 @@
 <p>Hello, bro!</p>
 
 <div>
-    <form name="find">
-        <label for="bandName">Band name</label>
+    <form>
+        <label for="bandNameSearch">Band name</label>
         <br>
-        <input type="text" id="bandName" placeholder="Band name.." value="Nirvana">
+        <input type="search" id="bandNameSearch" placeholder="Band name.."
+               value="Nirvana">
         <!--        <br>-->
         <!--        <label for="country">Country</label>-->
         <!--        <br>-->
@@ -24,7 +25,7 @@
         <!--            <option value="usa">USA</option>-->
         <!--        </select>-->
         <br>
-        <input type="submit" value="Find" onclick="openFindBand()">
+        <button class="button styled" onclick="openFindBand()">Find</button>
     </form>
 </div>
 
