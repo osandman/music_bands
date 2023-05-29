@@ -14,24 +14,20 @@ import java.util.Map;
 public class BandServlet extends HttpServlet {
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-    }
-
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");
 
         try (PrintWriter pw = resp.getWriter()) {
 
-//        Cookie[] cookies = req.getCookies();
             pw.println("<title>" + this.getServletName() + "</title>");
             String bandName = req.getParameter("name");
             printQuery(pw, bandName);
 
             pw.println("<br>\n" +
                     "<a href=\"/\">HOME</a>");
+
+//        Cookie[] cookies = req.getCookies();
 //        for (Cookie cookie : cookies) {
 //            pw.println("<p>");
 //            pw.printf("%s : %s, MaxAge = %d, version = %s",
@@ -50,7 +46,15 @@ public class BandServlet extends HttpServlet {
             pw.println("<br>Nothing found ... <br>");
         } else {
             pw.println("<p>Get all albums from band name contains word '" + bandName + "'</p>");
-            bands.forEach((k, v) -> pw.println("[" + v + "] " + k + "<br>"));
+            pw.println("<ul>");
+            bands.forEach((k, v) -> {
+                pw.println("<li>");
+                pw.println("<a href=\"./download?album=" +
+                        k.replace(" ", "_") + "\">");
+                pw.println("[" + v + "] " + k + "<br>");
+                pw.println("</a>");
+            });
+            pw.println("</ul>");
         }
     }
 
