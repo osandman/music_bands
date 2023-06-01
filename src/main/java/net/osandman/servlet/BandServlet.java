@@ -1,10 +1,9 @@
 package net.osandman.servlet;
 
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import net.osandman.db_service.GetData;
+import net.osandman.db_service.AlbumsDao;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,7 +40,7 @@ public class BandServlet extends HttpServlet {
     }
 
     private void printQuery(PrintWriter pw, String bandName) {
-        Map<String, String> bands = new GetData().getAlbums(bandName);
+        Map<String, String> bands = new AlbumsDao().getAlbums(bandName);
         if (bands == null || bands.size() == 0) {
             pw.println("<br>Nothing found ... <br>");
         } else {
