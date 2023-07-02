@@ -2,8 +2,11 @@ package net.osandman.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
-import net.osandman.db_service.AlbumsDao;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import net.osandman.repository.AlbumsDao;
+import net.osandman.util.DbManager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +14,11 @@ import java.util.Map;
 
 @WebServlet(name = "bandServlet", value = "/band")
 public class BandServlet extends HttpServlet {
+
+    @Override
+    public void destroy() {
+        DbManager.closePool();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
